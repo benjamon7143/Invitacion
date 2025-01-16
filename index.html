@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de Cumpleaños</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="title">🎉 ¡Estás Invitado! 🎉</h1>
+      <p class="subtitle">¡Únete a nosotros para una celebración de cumpleaños especial!</p>
+    </header>
+    
+    <div class="countdown-container">
+      <p>Tiempo restante para la fiesta:</p>
+      <div id="countdown">
+        <span id="days">00</span> días
+        <span id="hours">00</span> horas
+        <span id="minutes">00</span> minutos
+        <span id="seconds">00</span> segundos
+      </div>
+    </div>
+
+    <div class="name">
+      <label for="nameInput">Tu nombre:</label>
+      <input type="text" id="nameInput" placeholder="Ingresa tu nombre" required>
+    </div>
+
+    <footer>
+      <!-- Botón para confirmar asistencia -->
+      <button id="rsvpButton" class="button">Confirmar Asistencia</button>
+
+      <!-- Mensaje de confirmación que se muestra después de la confirmación -->
+      <div id="confirmationMessage" style="display: none;color: white;  ">
+        <p>¡Gracias por confirmar, <span id="confirmedName"></span>! Nos vemos en la fiesta. 🎉</p>
+      </div>
+    </footer>
+
+    <audio id="backgroundMusic" autoplay loop>
+      <source src="img/Iron Maiden - The Trooper (Remixed and Remastered) (online-audio-converter.com).mp3" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <img src="img/Foto.jpg" alt="Celebración de Cumpleaños" class="party-image">
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
