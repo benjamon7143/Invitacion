@@ -58,6 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  const music = document.getElementById('backgroundMusic');
+
+  // Reproducir música automáticamente, pero en estado silenciado
+  music.muted = false;
+  music.play();
+
   // Agregar un botón para pausar/reanudar la música
   const musicControlButton = document.createElement('button');
   musicControlButton.textContent = 'Pausar Música';
@@ -73,6 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
       music.pause();
       musicControlButton.textContent = 'Reanudar Música';
     }
+  });
+
+  // Cuando el usuario haga clic, desactivar el mute
+  music.addEventListener('play', () => {
+    music.muted = false; // Permitir que la música se escuche
   });
 
   updateCountdown();
