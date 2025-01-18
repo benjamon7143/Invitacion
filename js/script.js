@@ -52,11 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
         name: name,
         confirmed: true
       })
-    })
-    console.log('Enviando estos datos:', {
-      name: name,
-      confirmed: true
-    })
+      })
+      console.log('Enviando estos datos:', {
+        name: name,
+        confirmed: true
+      })
       .then(response => response.json())
       .then(data => {
         console.log("Response from server:", data);  // Muestra la respuesta del servidor
