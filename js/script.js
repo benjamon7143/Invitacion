@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const confirmationMessage = document.getElementById('confirmationMessage');
   const confirmedName = document.getElementById('confirmedName');
   const video = document.getElementById('backgroundVideo');
-  const videoSoundToggle = document.getElementById('videoSoundToggle');
 
   const eventDate = new Date('2025-02-01T13:30:00');
 
@@ -64,15 +63,25 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 
-  videoSoundToggle.addEventListener('click', () => {
+  // Botón para alternar el sonido del video
+  const soundControlButton = document.createElement('button');
+  soundControlButton.textContent = 'Activar Sonido';
+  soundControlButton.classList.add('button');
+  document.body.appendChild(soundControlButton);
+
+  soundControlButton.addEventListener('click', () => {
     if (video.muted) {
       video.muted = false;
-      videoSoundToggle.textContent = 'Desactivar Sonido';
+      soundControlButton.textContent = 'Desactivar Sonido';
     } else {
       video.muted = true;
-      videoSoundToggle.textContent = 'Activar Sonido';
+      soundControlButton.textContent = 'Activar Sonido';
     }
   });
+
+  // Reproducir el video sin sonido al cargar
+  video.muted = true;
+  video.play();
 
   updateCountdown();
 });
