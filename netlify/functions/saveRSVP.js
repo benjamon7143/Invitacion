@@ -9,7 +9,7 @@ exports.handler = async (event) => {
       console.log("Parsed data:", data);  // Muestra los datos enviados en el cuerpo de la solicitud
 
       // URL del Google Apps Script que recibe los datos
-      const googleScriptURL = "https://script.google.com/macros/s/AKfycbwTyndgIeq07AP0hqlq-ZbRdAd7MFJaod2suNr2kUvrUVibdgdEAZpyvvLtRZ3MED6Q/exec";
+      const googleScriptURL = "https://script.google.com/macros/s/AKfycbxdIuGvylyI7XHDmI9_5IHBLudoqnx1kDgG2VqfRpKrm8J_Bn-PxAxohMol1KIWSSCn/exec";
 
       // Enviar los datos al Google Apps Script
       console.log("Sending data to Google Apps Script URL:", googleScriptURL);
