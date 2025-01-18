@@ -20,5 +20,9 @@
   "homepage": "https://github.com/benjamon7143/Invitacion#readme",
   "dependencies": {
     "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "netlify dev"
   }
 }
