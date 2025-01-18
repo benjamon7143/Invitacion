@@ -1,0 +1,9 @@
+[build]
+  functions = "netlify/functions"  # Directorio de funciones en Netlify
+
+[[headers]]
+for = "/.netlify/functions/*"  # Aplica los encabezados para todas las funciones
+[headers.values]
+  Access-Control-Allow-Origin = "*"  # Permite cualquier origen
+  Access-Control-Allow-Methods = "GET, POST, OPTIONS"  # Métodos permitidos
+  Access-Control-Allow-Headers = "Content-Type"  # Encabezados permitidos
