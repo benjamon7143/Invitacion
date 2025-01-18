@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const confirmationMessage = document.getElementById('confirmationMessage');
   const confirmedName = document.getElementById('confirmedName');
   const video = document.getElementById('backgroundVideo');
+  const videoSoundToggle = document.getElementById('videoSoundToggle');
 
   const eventDate = new Date('2025-02-01T13:30:00');
 
-  // Función para actualizar el contador
   function updateCountdown() {
     const now = new Date();
     const timeDifference = eventDate - now;
@@ -28,10 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Actualiza el contador cada segundo
   setInterval(updateCountdown, 1000);
 
-  // Confirmar asistencia
   rsvpButton.addEventListener('click', () => {
     const name = nameInput.value.trim();
 
@@ -40,49 +38,41 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    fetch('https://script.google.com/macros/s/AKfycbyKYFyw0fsKd2dXpJ1PwxUq8xdg9kwv9sRT95wZ_qzJVVec9erW8Wq3Wc3P8eczhbR3/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbyC_6vcvTczlBj8kW44MSixsd0o7Kz_OJ-Ie5H86JEOd4pIM2YsCURq3zIjITcZUELh/exec', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name: name,
-        confirmed: true,
-      }),
+        confirmed: true
+      })
     })
-    .then(response => response.text())
-    .then(data => {
-      console.log('Éxito:', data);
-      rsvpButton.style.display = 'none';
-      confirmationMessage.style.display = 'block';
-      confirmedName.textContent = name;
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Hubo un problema al confirmar tu asistencia. Intenta de nuevo.');
-    });
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === "success") {
+          rsvpButton.style.display = 'none';
+          confirmedName.textContent = name;
+          confirmationMessage.style.display = 'block';
+        } else {
+          alert('Hubo un problema al registrar tu confirmación. Intenta de nuevo.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Hubo un problema al conectar con el servidor. Intenta de nuevo.');
+      });
   });
 
-  // Botón para alternar el sonido del video
-  const soundControlButton = document.createElement('button');
-  soundControlButton.textContent = 'Activar Sonido';
-  soundControlButton.classList.add('button');
-  document.body.appendChild(soundControlButton);
-
-  soundControlButton.addEventListener('click', () => {
+  videoSoundToggle.addEventListener('click', () => {
     if (video.muted) {
       video.muted = false;
-      soundControlButton.textContent = 'Desactivar Sonido';
+      videoSoundToggle.textContent = 'Desactivar Sonido';
     } else {
       video.muted = true;
-      soundControlButton.textContent = 'Activar Sonido';
+      videoSoundToggle.textContent = 'Activar Sonido';
     }
   });
 
-  // Reproducir el video sin sonido al cargar
-  video.muted = true;
-  video.play();
-
-  // Inicia el contador
   updateCountdown();
 });
