@@ -23,6 +23,11 @@ exports.handler = async (event) => {
       return {
         statusCode: 200,
         body: JSON.stringify({ message: "Datos guardados correctamente", response: responseData }),
+        headers: {
+          "Access-Control-Allow-Origin": "*", // Permitir todas las solicitudes de origen
+          "Access-Control-Allow-Methods": "POST, OPTIONS", // Métodos permitidos
+          "Access-Control-Allow-Headers": "Content-Type", // Encabezados permitidos
+        },
       };
     } catch (error) {
       console.error("Error:", error);
@@ -30,12 +35,18 @@ exports.handler = async (event) => {
       return {
         statusCode: 500,
         body: JSON.stringify({ message: "Error al guardar los datos", error: error.message }),
+        headers: {
+          "Access-Control-Allow-Origin": "*", // Permitir todas las solicitudes de origen
+        },
       };
     }
   } else {
     return {
       statusCode: 405,
       body: JSON.stringify({ message: "Método no permitido" }),
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Permitir todas las solicitudes de origen
+      },
     };
   }
 };
