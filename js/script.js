@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const rsvpButton = document.getElementById('rsvpButton');
   const nameInput = document.getElementById('nameInput');
   const confirmationMessage = document.getElementById('confirmationMessage');
-  const music = document.getElementById('backgroundMusic');
+  const video = document.getElementById('backgroundVideo');
 
   const eventDate = new Date('2025-02-01T13:30:00');
 
@@ -58,30 +58,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Reproducir música automáticamente en estado silenciado
-  music.muted = true;
-  music.play();
+  // Botón para pausar/reanudar el video
+  const videoControlButton = document.createElement('button');
+  videoControlButton.textContent = 'Pausar Video';
+  videoControlButton.classList.add('button');
+  document.body.appendChild(videoControlButton);
 
-  // Agregar un botón para pausar/reanudar la música
-  const musicControlButton = document.createElement('button');
-  musicControlButton.textContent = 'Pausar Música';
-  musicControlButton.classList.add('button');
-  document.body.appendChild(musicControlButton);
-
-  // Función para pausar/reanudar música
-  musicControlButton.addEventListener('click', () => {
-    if (music.paused) {
-      music.play();
-      musicControlButton.textContent = 'Pausar Música';
+  videoControlButton.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+      videoControlButton.textContent = 'Pausar Video';
     } else {
-      music.pause();
-      musicControlButton.textContent = 'Reanudar Música';
+      video.pause();
+      videoControlButton.textContent = 'Reanudar Video';
     }
-  });
-
-  // Desactivar el mute cuando la música empiece a reproducirse
-  music.addEventListener('play', () => {
-    music.muted = false; // Permite escuchar la música después de iniciar la reproducción
   });
 
   updateCountdown();

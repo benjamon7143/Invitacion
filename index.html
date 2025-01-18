@@ -12,7 +12,13 @@
       <h1 class="title">🎉 ¡Estás Invitado! 🎉</h1>
       <p class="subtitle">¡Únete a nosotros para una celebración de cumpleaños especial!</p>
     </header>
-    
+
+    <!-- Información del evento -->
+    <div class="event-info">
+      <p><strong>Fecha:</strong> Sábado, 1 de Febrero de 2025 a las 13:30 hrs</p>
+      <p><strong>Dirección:</strong> Calle Ficticia #123, Ciudad Ejemplo</p>
+    </div>
+
     <div class="countdown-container">
       <p>Tiempo restante para la fiesta:</p>
       <div id="countdown">
@@ -33,17 +39,15 @@
       <button id="rsvpButton" class="button">Confirmar Asistencia</button>
 
       <!-- Mensaje de confirmación que se muestra después de la confirmación -->
-      <div id="confirmationMessage" style="display: none;color: white;  ">
+      <div id="confirmationMessage" style="display: none; color: white;">
         <p>¡Gracias por confirmar, <span id="confirmedName"></span>! Nos vemos en la fiesta. 🎉</p>
       </div>
     </footer>
 
-    <audio id="backgroundMusic" autoplay loop>
-      <source src="img/Iron Maiden - The Trooper (Remixed and Remastered) (online-audio-converter.com).mp3" type="audio/mpeg">
-      Tu navegador no soporta el elemento de audio.
-    </audio>
-
-    <img src="img/Foto.jpg" alt="Celebración de Cumpleaños" class="party-image">
+    <video id="backgroundVideo" autoplay muted loop>
+      <source src="img/Iron Maiden - The Trooper (Remixed and Remastered).mp4" type="video/mp4">
+      Tu navegador no soporta el elemento de video.
+    </video>
   </div>
 
   <script src="js/script.js"></script>
