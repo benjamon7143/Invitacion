@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const rsvpButton = document.getElementById('rsvpButton');
   const nameInput = document.getElementById('nameInput');
   const confirmationMessage = document.getElementById('confirmationMessage');
+  const confirmedName = document.getElementById('confirmedName');
   const video = document.getElementById('backgroundVideo');
 
   const eventDate = new Date('2025-02-01T13:30:00');
 
+  // Función para actualizar el contador
   function updateCountdown() {
     const now = new Date();
     const timeDifference = eventDate - now;
@@ -26,8 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Actualiza el contador cada segundo
   setInterval(updateCountdown, 1000);
 
+  // Confirmar asistencia
   rsvpButton.addEventListener('click', () => {
     const name = nameInput.value.trim();
 
@@ -43,14 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       body: JSON.stringify({
         name: name,
-        confirmed: true
-      })
+        confirmed: true,
+      }),
     })
     .then(response => response.text())
     .then(data => {
       console.log('Éxito:', data);
       rsvpButton.style.display = 'none';
       confirmationMessage.style.display = 'block';
+      confirmedName.textContent = name;
     })
     .catch(error => {
       console.error('Error:', error);
@@ -58,21 +63,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Botón para pausar/reanudar el video
-  const videoControlButton = document.createElement('button');
-  videoControlButton.textContent = 'Pausar Video';
-  videoControlButton.classList.add('button');
-  document.body.appendChild(videoControlButton);
+  // Control del sonido del video
+  const soundButton = document.createElement('button');
+  soundButton.textContent = 'Activar Sonido';
+  soundButton.classList.add('button');
+  document.body.appendChild(soundButton);
 
-  videoControlButton.addEventListener('click', () => {
-    if (video.paused) {
-      video.play();
-      videoControlButton.textContent = 'Pausar Video';
-    } else {
-      video.pause();
-      videoControlButton.textContent = 'Reanudar Video';
-    }
+  soundButton.addEventListener('click', () => {
+    video.muted = false;
+    video.play();
+    soundButton.style.display = 'none';
   });
 
+  // Reproducir el video sin sonido al cargar
+  video.muted = true;
+  video.play();
+
+  // Inicia el contador
   updateCountdown();
 });
