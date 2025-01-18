@@ -63,16 +63,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Control del sonido del video
-  const soundButton = document.createElement('button');
-  soundButton.textContent = 'Activar Sonido';
-  soundButton.classList.add('button');
-  document.body.appendChild(soundButton);
+  // Botón para alternar el sonido del video
+  const soundControlButton = document.createElement('button');
+  soundControlButton.textContent = 'Activar Sonido';
+  soundControlButton.classList.add('button');
+  document.body.appendChild(soundControlButton);
 
-  soundButton.addEventListener('click', () => {
-    video.muted = false;
-    video.play();
-    soundButton.style.display = 'none';
+  soundControlButton.addEventListener('click', () => {
+    if (video.muted) {
+      video.muted = false;
+      soundControlButton.textContent = 'Desactivar Sonido';
+    } else {
+      video.muted = true;
+      soundControlButton.textContent = 'Activar Sonido';
+    }
   });
 
   // Reproducir el video sin sonido al cargar

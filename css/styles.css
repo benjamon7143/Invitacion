@@ -65,7 +65,7 @@ body {
   }
 
   .name input::placeholder {
-    color: #888;
+    color: white;
   }
 
   .button {
