@@ -1,14 +1,18 @@
 const fetch = require("node-fetch");
 
 exports.handler = async (event) => {
+  console.log("Received event:", event);  // Muestra el evento recibido
+
   if (event.httpMethod === "POST") {
     try {
       const data = JSON.parse(event.body);
+      console.log("Parsed data:", data);  // Muestra los datos enviados en el cuerpo de la solicitud
 
       // URL del Google Apps Script que recibe los datos
       const googleScriptURL = "https://script.google.com/macros/s/AKfycbwvmimuQiEzoC9UyXiEFwJ3l02_CasZ5b_dm_pNthjjE8JIxqr7DP_Kkp1CjYrEnkr0/exec";
 
       // Enviar los datos al Google Apps Script
+      console.log("Sending data to Google Apps Script URL:", googleScriptURL);
       const response = await fetch(googleScriptURL, {
         method: "POST",
         headers: {
@@ -18,6 +22,7 @@ exports.handler = async (event) => {
       });
 
       const responseData = await response.text();
+      console.log("Google Apps Script response:", responseData);  // Muestra la respuesta del script
 
       return {
         statusCode: 200,
@@ -29,7 +34,7 @@ exports.handler = async (event) => {
         },
       };
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error occurred:", error);  // Muestra el error en la consola
 
       return {
         statusCode: 500,
@@ -40,6 +45,8 @@ exports.handler = async (event) => {
       };
     }
   } else {
+    console.log("Method not allowed:", event.httpMethod);  // Muestra el método HTTP si no es POST
+
     return {
       statusCode: 405, // Método no permitido
       body: JSON.stringify({ message: "Método no permitido" }),
