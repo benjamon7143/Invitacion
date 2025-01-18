@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const eventDate = new Date('2025-02-01T13:30:00');
 
+  // Actualiza el contador cada segundo
   function updateCountdown() {
     const now = new Date();
     const timeDifference = eventDate - now;
@@ -27,8 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  setInterval(updateCountdown, 1000);
-
+  // Envía la confirmación al servidor
   rsvpButton.addEventListener('click', () => {
     const name = nameInput.value.trim();
 
@@ -39,13 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetch('https://script.google.com/macros/s/AKfycbyC_6vcvTczlBj8kW44MSixsd0o7Kz_OJ-Ie5H86JEOd4pIM2YsCURq3zIjITcZUELh/exec', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: name,
-        confirmed: true
-      })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, confirmed: true }),
     })
       .then(response => response.json())
       .then(data => {
@@ -84,4 +79,5 @@ document.addEventListener('DOMContentLoaded', () => {
   video.play();
 
   updateCountdown();
+  setInterval(updateCountdown, 1000);
 });
