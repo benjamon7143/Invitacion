@@ -45,8 +45,8 @@ body {
   }
 
   .name label {
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
     margin-bottom: 8px;
     color: white;
   }
@@ -65,7 +65,7 @@ body {
   }
 
   .name input::placeholder {
-    color: white;
+    color: black;
   }
 
   .button {
@@ -93,6 +93,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
+
   #backgroundVideo {
     position: fixed;
     top: 0;
@@ -102,8 +103,50 @@ body {
     object-fit: cover;
     z-index: -1; /* Detrás de los demás elementos */
   }
+
   .event-info{
     font-size: 1.2em;
     color: #ffffff;
+  }
+
+  #eventLocation {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  #eventLocation h3, #eventLocation h4 {
+    color: whitesmoke;
+  }
+  
+  #eventLocation p {
+    font-size: 16px;
+  }
+  
+  #eventLocation .button {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  #eventLocation .button:hover {
+    background-color: #0056b3;
+  }
+  .asistencia{
+    font-size: 25px;
+    color: white;
+    font-weight: 700;
+  }
+
+  .llegar{
+    font-size: 20px;
+    color: whitesmoke;
+    font-weight: 700;
   }
   

@@ -16,7 +16,9 @@
     <!-- Información del evento -->
     <div class="event-info">
       <p><strong>Fecha:</strong> Sábado, 1 de Febrero de 2025 a las 13:30 hrs</p>
-      <p><strong>Dirección:</strong> Calle Ficticia #123, Ciudad Ejemplo</p>
+      <h3>Ubicación del Evento</h3>
+      <p>La fiesta será en:</p>
+      <p><strong>Loteo los Quillayes, parcela 14, Pirque, Región Metropolitana</strong></p>
     </div>
 
     <div class="countdown-container">
@@ -30,6 +32,9 @@
     </div>
 
     <div class="name">
+
+      <p class="asistencia">Ingrese nombre para la confirmación de Asistencia</p>
+
       <label for="nameInput">Tu nombre:</label>
       <input type="text" id="nameInput" placeholder="Ingresa tu nombre" required>
     </div>
@@ -43,6 +48,18 @@
         <p>¡Gracias por confirmar, <span id="confirmedName"></span>! Nos vemos en la fiesta. 🎉</p>
       </div>
     </footer>
+
+    <div id="eventLocation">
+      <h4 class="llegar">¿Cómo llegar?</h4>
+      <p>
+        <a href="https://maps.app.goo.gl/bjXxpVgqUGzEavqh8" target="_blank">
+          <button class="button">Abrir en Google Maps</button>
+        </a>
+        <a href="https://ul.waze.com/ul?place=EjlMb3RlbyBMb3MgUXVpbGxheWVzLCBQaXJxdWUsIFJlZ2nDs24gTWV0cm9wb2xpdGFuYSwgQ2hpbGUiLiosChQKEgnljSy5ZihjlhFSqb6Rh1taMxIUChIJySbr4xfWYpYR0-hFzxaNryM&ll=-33.69040530%2C-70.60218080&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location" target="_blank">
+          <button class="button">Abrir en Waze</button>
+        </a>
+      </p>
+    </div>
 
     <video id="backgroundVideo" autoplay loop>
       <source src="public/assets/Iron Maiden - The Trooper (Remixed and Remastered).mp4" type="video/mp4">
