@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const eventDate = new Date('2025-02-01T13:30:00');
 
-  // Actualiza el contador cada segundo
   function updateCountdown() {
     const now = new Date();
     const timeDifference = eventDate - now;
@@ -28,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Envía la confirmación al servidor
+  setInterval(updateCountdown, 1000);
+
   rsvpButton.addEventListener('click', () => {
     const name = nameInput.value.trim();
 
@@ -37,14 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    fetch('https://script.google.com/macros/s/AKfycbyC_6vcvTczlBj8kW44MSixsd0o7Kz_OJ-Ie5H86JEOd4pIM2YsCURq3zIjITcZUELh/exec', {
+    fetch('https://mifiestacumple.netlify.app/.netlify/functions/saveRSVP', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, confirmed: true }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        confirmed: true
+      })
     })
       .then(response => response.json())
       .then(data => {
-        if (data.status === "success") {
+        if (data.message === "Datos guardados correctamente") {
           rsvpButton.style.display = 'none';
           confirmedName.textContent = name;
           confirmationMessage.style.display = 'block';
@@ -79,5 +84,4 @@ document.addEventListener('DOMContentLoaded', () => {
   video.play();
 
   updateCountdown();
-  setInterval(updateCountdown, 1000);
 });
