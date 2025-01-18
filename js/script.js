@@ -72,6 +72,12 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Hubo un problema al conectar con el servidor. Intenta de nuevo.');
       });
   });
+  
+  console.log('Enviando estos datos:', {
+    name: name,
+    confirmed: true
+  });
+  
 
   // Botón para alternar el sonido del video
   const soundControlButton = document.createElement('button');
